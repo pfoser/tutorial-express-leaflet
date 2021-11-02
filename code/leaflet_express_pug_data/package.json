@@ -1,0 +1,19 @@
+{
+  "name": "leaflet-ex2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "build": "browserify webmap.js -o public/javascripts/webmap.js & browserify webmap2.js -o public/javascripts/webmap2.js & browserify webmap3.js -o public/javascripts/webmap3.js & cp node_modules/leaflet/dist/leaflet.css public/stylesheets/leaflet.css & cp node_modules/leaflet.markercluster/dist/MarkerCluster.css public/stylesheets/MarkerCluster.css & cp node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css public/stylesheets/MarkerCluster.Default.css & cp -R node_modules/leaflet/dist/images public/stylesheets/images"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "leaflet": "^1.7.1",
+    "leaflet.markercluster": "^1.5.3",
+    "morgan": "~1.9.1",
+    "pug": "^3.0.2"
+  }
+}

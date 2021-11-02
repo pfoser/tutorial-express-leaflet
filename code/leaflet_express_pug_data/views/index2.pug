@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  // create a <div> map element to be referenced in webmap.js
+  #map
+
+  // https://stackoverflow.com/questions/55311902/how-to-pass-json-data-from-express-to-a-javascript-jquery-script-in-pug
+  script(type='text/javascript').
+    window.datastr = "#{datastr}"; 
+  
+  // the leaflet javascript code...
+  script(src='/javascripts/webmap2.js')
