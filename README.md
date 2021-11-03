@@ -1,8 +1,10 @@
-# Tutorial: Creating an Express Node.js Server for a Simple Leaflet Webmap
+# Tutorial: Express Node.js Server Leaflet Webmap
 
-Richard Wen <rrwen.dev@gmail.com>  
+Original tutorial from Richard Wen <rrwen.dev@gmail.com>. Additions by Dieter Pfoser <dpfoser@gmu.edu>.
   
-A tutorial for creating a leaflet webmap with express in Node.js
+A tutorial for creating three leaflet webmaps with express in Node.js. The applications (see code folder) range from a simple webmap (Application 1) to building a client-server application that shows GeoJSON data (Application 3). Application 2 uses [Pug](https://github.com/pugjs/pug) (formely known as jade), a template engine for building Web pages, to implement Application 1. 
+
+# Preliminaries
 
 ## Step 1. Install Software
 
@@ -75,6 +77,8 @@ Inside your `<project_name>` folder, install the dependencies with `npm`, where 
 npm install
 ```
 
+# A simple Leaflet Webapp
+
 ## Step 4. Creating the leaflet Webmap Code
 
 We can then create a JavaScript file that stores the code for our leaflet web map. Keep in mind that this code requires Node.js which is only available inside the server or back end.
@@ -89,10 +93,10 @@ npm install --save leaflet
 
 ### 4.2 Create a leaflet JavaScript File
 
-Create a file for the leaflet map by sending an empty line with `echo.` into `>` a file called `webmap.js`:
+Create a file for the leaflet map by using the `touch` command:
 
 ```
-echo. > webmap.js
+touch webmap.js
 ```
 
 ### 4.3 Add leaflet Code to the File
@@ -130,6 +134,8 @@ L.circleMarker([43.659752, -79.378161]).addTo(map)
 ```
 
 Save the added `webmap.js` file.
+
+In this repository, the file can be found in [webmap.js](code/leaflet_express/webmap.js)
 
 ### 4.4 Create a HTML Divider for the leaflet Webmap
 
