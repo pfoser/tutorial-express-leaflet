@@ -368,12 +368,11 @@ The tutorial so far has focussed on running the environment using a command line
 ```
 express <project_name> --no-view
 ```
-
-This creates the following structure
+creating the following project structure.
 
 ![project_structure](images/project_structure.png).
 
-This first express application uses basic html to embed Javascript. Application 2 now uses Pug, which is a template engine for Node to write html. It uses a simplified syntax that compiles to HTML. It makes for  more reusable and readable code. Check out this nice [Pug overview and tutorial](https://www.sitepoint.com/a-beginners-guide-to-pug/). 
+This first express application uses basic html to embed Javascript. Application 2 now uses Pug (formerly known as Jade), which is a template engine for Node to write html. It uses a simplified syntax that compiles to HTML and creates reusable and more readable code. Check out this nice [Pug overview and tutorial](https://www.sitepoint.com/a-beginners-guide-to-pug/). 
 
 A simple modification to the above express statement creates project that uses Pug templating instead of simple html.
 
@@ -385,8 +384,7 @@ The resulting folder structure in comparison to Application 1 now looks as follo
 ![project_structure](images/project_structure_comparison.jpeg).
 
 ## Pug templates
-Using a templating engine, the index.html page is replaced by Pug views. Our example uses two views layout.
-[layout.pug](code/leaflet_express_pug/views/layout.pug) provides the basic web page template including all stylesheet javascript library links. 
+Using this templating engine, the index.html page is replaced by Pug views. [layout.pug](code/leaflet_express_pug/views/layout.pug) provides the basic web page template including all stylesheet javascript library links. 
 
 ```jade
 // layout.pug
@@ -399,7 +397,7 @@ html
   body
     block content
 ```
-This template is used as a basis for actual web pages such as [index.pug](code/leaflet_express_pug/views/index.pug), which `extends layout`. [index.pug](code/leaflet_express_pug/views/index.pug) defines one `div` element for our Leaflet map object and also includes our Javascript code used to create the Leaflet web map (remember, browserify is used to package all libraries that we `require` in our code.)
+layout.pug is used as a basis for actual web pages such as [index.pug](code/leaflet_express_pug/views/index.pug), which `extends layout`. [index.pug](code/leaflet_express_pug/views/index.pug) defines one `div` element for our Leaflet map object and also includes our Javascript code used to create the Leaflet web map (remember, browserify is used to package all libraries that we `require` in our code.)
 
 ```pug
 // index.pug
@@ -412,7 +410,6 @@ block content
   script(src='/javascripts/webmap.js') 
 
 ```
-
 And that is it! In a nutshell, this example replaces [index.html](code/leaflet_express/public/index.html) with [layout.pug](code/leaflet_express_pug/views/layout.pug) and [index.pug](code/leaflet_express_pug/views/index.pug), two Pug views (html template files).
 
 The commands to **build your code**, i.e., copy all relevant files to the public directory, and to **start the application** remain the same, and the web application will be available [localhost:3000](http://localhost:3000/).
@@ -422,5 +419,7 @@ npm start
 ```
 
 # Application 3: Leaflet and Data
-Building on Application 2, we want to expand its scope but showing markers created from a GeoJSON dataset.
+Building on Application 2, we want to expand its scope by showing markers based on a GeoJSON dataset. We will work off an express project structure created by the following command `express leaflet_express_pug_data --view=pug`, which creates the skeleton project structure in [code/leaflet_express_pug_data](code/leaflet_express_pug_data). Go check it out!
+
+
 
