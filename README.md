@@ -413,7 +413,7 @@ block content
 
 ```
 
-And that is it! In a nutshell, this example replaces [index.html](code/leaflet_express/public/index.html) with [index.pug](code/leaflet_express_pug/views/index.pug), a Pug view (html template file).
+And that is it! In a nutshell, this example replaces [index.html](code/leaflet_express/public/index.html) with [layout.pug](code/leaflet_express_pug/views/layout.pug) and [index.pug](code/leaflet_express_pug/views/index.pug), two Pug views (html template files).
 
 The commands to **build your code**, i.e., copy all relevant files to the public directory, and to **start the application** remain the same, and the web application will be available [localhost:3000](http://localhost:3000/).
 ```
