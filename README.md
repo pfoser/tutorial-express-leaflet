@@ -77,7 +77,7 @@ Inside your `<project_name>` folder, install the dependencies with `npm`, where 
 npm install
 ```
 
-# A simple Leaflet Webapp
+# Applications 1: a simple Leaflet Webapp
 
 ## Step 4. Creating the leaflet Webmap Code
 
@@ -121,21 +121,17 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
 }).addTo(map);
 
 // Adds a popup marker to the webmap for GGL address
-L.circleMarker([43.659752, -79.378161]).addTo(map)
+L.circleMarker([38.829772, -77.305550]).addTo(map)
 	.bindPopup(
-		'MON 304<br>' + 
-		'Monetary Times Building<br>' +
-		'341 Victoria Street<br>' + 
-		'Toronto, Ontario, Canada<br>' +
-		'M5B 2K3<br><br>' + 
-		'Tel: 416-9795000 Ext. 5192'
+		'<b>Geography and Geoinformation Science Dept.</b><br>' +
+		'Exploratory Hall<br>' + 
+		'George Mason University<br>' +
+		'Fairfax, VA'
 	)
 	.openPopup();
 ```
 
-Save the added `webmap.js` file.
-
-In this repository, the file can be found in [webmap.js](code/leaflet_express/webmap.js)
+Save the added [webmap.js](code/leaflet_express/webmap.js) file (links to the actual file in our repository).
 
 ### 4.4 Create a HTML Divider for the leaflet Webmap
 
@@ -143,8 +139,8 @@ Notice that in the code of [Section 4.3](#43-add-leaflet-code-to-the-file), a di
   
 Open `public/index.html` for editing and replace everything with the following HTML code:
 
-* Notice that we added a divider with id `map` to create our leaflet webmap in
-* Note that the width and height of the divider must be set for the webmap to show (we will do this later in a CSS file)
+* Notice that we added a divider with id `map` to create our leaflet webmap in.
+* Note that the width and height of the divider must be set for the webmap to show (we will do this later in a [CSS file](code/leaflet_express/public/stylesheets/style.css)).
 
 ```html
 <html>
@@ -163,7 +159,7 @@ Open `public/index.html` for editing and replace everything with the following H
 </html>
 ```
 
-Save the modified `public/index.html` file.
+Save the modified [public/index.html](code/leaflet_express/public/index.html) file.
 
 ## Step 5. Building the leaflet Webmap Code for the Client Side
 
@@ -185,11 +181,11 @@ After installing browserify, we can build and bundle the leaflet code from `webm
 browserify webmap.js -o public/javascripts/webmap.js
 ```
 
-For convenience, we can add the browserify bundling command under `scripts: build` in the file `package.json` (saving after you add this code):
+For convenience, we can add the browserify bundling command under `scripts: build` in the file [package.json](code/leaflet_express/package.json) (saving after you add this code):
 
 ```json
 {
-  "name": "project-name",
+  "name": "leaflet",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -197,13 +193,14 @@ For convenience, we can add the browserify bundling command under `scripts: buil
     "build": "browserify webmap.js -o public/javascripts/webmap.js"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
+    "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "leaflet": "^1.4.0",
-    "morgan": "~1.9.0"
+    "express": "~4.16.1",
+    "leaflet": "^1.7.1",
+    "morgan": "~1.9.1"
   }
 }
+
 ```
 
 This allows us to run the same command for bundling the leaflet code with a more convenient call everytime we make changes to `webmap.js`:
@@ -214,9 +211,21 @@ npm run build
 
 ### 5.3 Adding the Bundled leaflet Code
 
-You will now notice that `public/javascripts/webmap.js` exists. This is the bundled version of your leaflet webmap source code, and will need to be added to the `public/index.html` file in order to display your webmap.  
-  
-Replace the `public/index.html` code with the following:
+You will now notice that [public/javascripts/webmap.js](code/leaflet_express/public/javascripts/webmap.js) exists. This is the bundled version of your leaflet webmap source code, and will need to be added to the [public/index.html](code/leaflet_express/public/index.html) file in order to display your webmap. 
+
+If you open the [public/javascripts/webmap.js](code/leaflet_express/public/javascripts/webmap.js) file, you will notice that it not only contains the [webmap.js](code/leaflet_express/webmap.js) code from above, but all other javascript libraries that are needed to run the code clientside, e.g., leaflet.js. The beauty of this approach is that you won't need any external links to sites hosting javascript libraries in your code, e.g., 
+```javascript 
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+```
+, but only have to include [webmap.js](code/leaflet_express/public/javascripts/webmap.js), i.e.,
+```javascript 
+<script src="javascripts/webmap.js"></script>
+```
+, which has them all bundled!
+
+In this context, think about the elegant interplay of (i) `npm install`, (ii) require statements to include javascript libraries in node.js and (iii) a bundler such as browersify that grabs and bundles them all in a single library file, i.e., in our case [public/javascripts/webmap.js](code/leaflet_express/public/javascripts/webmap.js)
+
+As such, replace the `public/index.html` code with the following:
 
 ```html
 <html>
@@ -235,7 +244,7 @@ Replace the `public/index.html` code with the following:
 </html>
 ```
 
-Save the modified `public/index.html` file.
+Save the modified [public/index.html](code/leaflet_express/public/index.html) file.
 
 ## Step 6. Final Touches
 
@@ -243,13 +252,13 @@ A set of final touches need to be made for better web map appearance and for the
 
 ### 6.1 Adding the leaflet CSS
 
-Leaflet requires a CSS file in `node_modules/leaflet/dist/leaflet.css`, which can be copied into the public folder that is served to the client:
+Leaflet requires a CSS file in [node_modules/leaflet/dist/leaflet.css](code/leaflet_express/node_modules/leaflet/dist/leaflet.css), which can be copied into the public folder that is served to the client:
 
 ```
 cp node_modules/leaflet/dist/leaflet.css public/stylesheets/leaflet.css
 ```
 
-You will have to also open `public/index.html` and edit/save it to include the `stylesheets/leaflet.css` file:
+You will have to also open [public/index.html](code/leaflet_express/public/index.html) and edit/save it to include the [stylesheets/leaflet.css](code/leaflet_express/public/stylesheets/leaflet.css) file:
 
 ```html
 <html>
@@ -270,7 +279,7 @@ You will have to also open `public/index.html` and edit/save it to include the `
 </html>
 ```
 
-It is also important to include the CSS file into your build script in `package.json` so that it is updated everytime you rebuild `webmap.js` with `npm run build`:
+It is also important to include the CSS file into your build script in [package.json](code/leaflet_express/package.json) so that it is updated everytime you rebuild `webmap.js` with `npm run build`:
 
 ```json
 {
@@ -293,7 +302,7 @@ It is also important to include the CSS file into your build script in `package.
 
 ### 6.2 Improving the CSS
 
-Since leaflet requires that the dimensions be specified for the webmap divider, we can can replace the contents of the `public/stylesheets/style.css` file with the following to define the width and height of the webmap:
+Since leaflet requires that the dimensions be specified for the webmap divider, we can can replace the contents of the [public/stylesheets/style.css](code/leaflet_express/public/stylesheets/style.css) file with the following to define the width and height of the webmap:
 
 ```css
 body {
@@ -306,17 +315,27 @@ html, body, #map {
 }
 ```
 
-Save the modified `public/stylesheets/style.css` file.
+Save the modified [public/stylesheets/style.css](code/leaflet_express/public/stylesheets/style.css) file.
 
-## Step 7. Running the Server
+## Step 9. Code Structure Overview
 
-### 7.1 Final Project Structure
+The following figure provides an overview of the code structure. 
+* When requesting a the Web page [localhost:3000/](http://localhost:3000/) the [app.js](code/leaflet_express_pug/app.js) is executed by the Web server. 
+* In [app.js](code/leaflet_express_pug/app.js) the `/` path is linked to the `indexRouter` variable and as such to the [routes/index.js](code/leaflet_express/routes/index.js) file. 
+* [routes/index.js](code/leaflet_express/routes/index.js) renders the [public/index.html](code/leaflet_express/public/index.html) file for the `/` path.
+* [public/index.html](code/leaflet_express/public/index.html) includes the [public/webmap.js](code/leaflet_express/public/javascripts/webmap.js). Remember that this is the bundled javascript library that contains your [webmap.js](code/leaflet_express/webmap.js) file and all libraries that are mentioned as dependencies in [package.json](code/leaflet_express/package.json).
+
+![final_structure](images/code_schema.jpeg)
+
+## Step 8. Running the Server
+
+### 8.1 Final Project Structure
 
 After going through steps 1 to 6, you should have a file structure that looks similar to the following (node_modules not shown):
 
 ![final_structure](images/final_structure.png)
 
-### 7.2 Run the express Server
+### 8.2 Run the express Server
 
 Run the express server with the following command:
 
@@ -324,7 +343,7 @@ Run the express server with the following command:
 npm start
 ```
 
-### 7.3 Viewing the Client Side Browser
+### 8.3 Viewing the Client Side Browser
 
 By default, express runs on port `3000` on `localhost`, which can be accessed in the browser by going to:  
   
@@ -334,6 +353,16 @@ Your browser should display a map that looks similar to the one below:
 
 ![webmap](images/webmap.png)
 
-### 7.4 Shutting Down the express Server
+### 8.4 Shutting Down the express Server
 
 When you are done running the server, shut it down by pressing `Ctrl + C` and then answering `yes` to the user prompt asking for termination.
+
+## 9 Automating Tasks
+
+# VSCode
+
+The tutorial so far has focussed on running the environment using a command line interface. Luckily, there are more comfortable developer environments such as [VSCode](https://code.visualstudio.com). VSCode not only helps you with keeping your code organized, but also provides code analysis such as highlighting (linting), running and debugging, and integrates well with github. 
+
+# Application 2: Templating
+
+

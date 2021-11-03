@@ -15,13 +15,11 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
 }).addTo(map);
 
 // Adds a popup marker to the webmap for GGL address
-L.circleMarker([43.659752, -79.378161]).addTo(map)
+L.circleMarker([38.829772, -77.305550]).addTo(map)
 	.bindPopup(
-		'MON 304<br>' + 
-		'Monetary Times Building<br>' +
-		'341 Victoria Street<br>' + 
-		'Toronto, Ontario, Canada<br>' +
-		'M5B 2K3<br><br>' + 
-		'Tel: 416-9795000 Ext. 5192'
+		'<b>Geography and Geoinformation Science Dept.</b><br>' +
+		'Exploratory Hall<br>' + 
+		'George Mason University<br>' +
+		'Fairfax, VA'
 	)
 	.openPopup();
