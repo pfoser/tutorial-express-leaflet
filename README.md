@@ -355,7 +355,7 @@ Your browser should display a map that looks similar to the one below:
 
 When you are done running the server, shut it down by pressing `Ctrl + C` and then answering `yes` to the user prompt asking for termination.
 
-## 8 Automating Tasks
+## Automating Tasks
 
 # VSCode
 
@@ -383,3 +383,44 @@ express <project_name> --view=pug
 The resulting folder structure in comparison to Application 1 now looks as follows.
 
 ![project_structure](images/project_structure_comparison.jpeg).
+
+## Pug templates
+Using a templating engine, the index.html page is replaced by Pug views. Our example uses two views layout.
+[layout.pug](code/leaflet_express_pug/views/layout.pug) provides the basic web page template including all stylesheet javascript library links. 
+
+```jade
+// layout.pug
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/leaflet.css')
+  body
+    block content
+```
+This template is used as a basis for actual web pages such as [index.pug](code/leaflet_express_pug/views/index.pug), which `extends layout`. [index.pug](code/leaflet_express_pug/views/index.pug) defines one `div` element for our Leaflet map object and also includes our Javascript code used to create the Leaflet web map (remember, browserify is used to package all libraries that we `require` in our code.)
+
+```pug
+// index.pug
+extends layout
+
+block content
+  // create a <div> map element to be referenced in webmap.js
+  #map
+  // the leaflet javascript code...
+  script(src='/javascripts/webmap.js') 
+
+```
+
+And that is it! In a nutshell, this example replaces [index.html](code/leaflet_express/public/index.html) with [index.pug](code/leaflet_express_pug/views/index.pug), a Pug view (html template file).
+
+The commands to **build your code**, i.e., copy all relevant files to the public directory, and to **start the application** remain the same, and the web application will be available [localhost:3000](http://localhost:3000/).
+```
+npm run build
+npm start
+```
+
+# Application 3: Leaflet and Data
+Building on Application 2, we want to expand its scope but showing markers created from a GeoJSON dataset.
+
