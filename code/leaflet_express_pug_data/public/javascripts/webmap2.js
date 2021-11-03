@@ -14072,8 +14072,10 @@ var L = require('leaflet'); //npm install --save leaflet
 // Creates a leaflet map binded to an html <div> with id "map"
 // setView will set the initial map view to the location at coordinates
 // 13 represents the initial zoom level with higher values being more zoomed in
-var map = L.map('map').setView([38.829772, -77.305550], 16);
-
+var map = L.map('map', {
+	center: [38.829772, -77.305550], 
+	zoom: 11
+});
 // Adds the basemap tiles to your web map
 // Additional providers are available at: https://leaflet-extras.github.io/leaflet-providers/preview/
 L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
@@ -14091,7 +14093,7 @@ L.circleMarker([38.829772, -77.305550]).addTo(map)
 		'George Mason University<br>' +
 		'Fairfax, VA'
 	)
-	.openPopup();
+	;
 
 // Adding the GEOJSON DATA
 // This takes the JsonData that was sent with the GET request .
