@@ -317,25 +317,25 @@ html, body, #map {
 
 Save the modified [public/stylesheets/style.css](code/leaflet_express/public/stylesheets/style.css) file.
 
-## Step 9. Code Structure Overview
+## Step 7. Running the Server
 
-The following figure provides an overview of the code structure. 
-* When requesting a the Web page [localhost:3000/](http://localhost:3000/) the [app.js](code/leaflet_express_pug/app.js) is executed by the Web server. 
-* In [app.js](code/leaflet_express_pug/app.js) the `/` path is linked to the `indexRouter` variable and as such to the [routes/index.js](code/leaflet_express/routes/index.js) file. 
-* [routes/index.js](code/leaflet_express/routes/index.js) renders the [public/index.html](code/leaflet_express/public/index.html) file for the `/` path.
-* [public/index.html](code/leaflet_express/public/index.html) includes the [public/webmap.js](code/leaflet_express/public/javascripts/webmap.js). Remember that this is the bundled javascript library that contains your [webmap.js](code/leaflet_express/webmap.js) file and all libraries that are mentioned as dependencies in [package.json](code/leaflet_express/package.json).
-
-![final_structure](images/code_schema.jpeg)
-
-## Step 8. Running the Server
-
-### 8.1 Final Project Structure
+### 7.1 Final Project Structure
 
 After going through steps 1 to 6, you should have a file structure that looks similar to the following (node_modules not shown):
 
 ![final_structure](images/final_structure.png)
 
-### 8.2 Run the express Server
+## Step 7.1. Code Structure Overview
+
+The following figure provides an overview of the code structure. 
+* When requesting the application's Web page [localhost:3000/](http://localhost:3000/), [app.js](code/leaflet_express_pug/app.js) is executed by the Web server. 
+* In [app.js](code/leaflet_express_pug/app.js) the `/` path is linked to the `indexRouter` variable and as such to the [routes/index.js](code/leaflet_express/routes/index.js) file. 
+* [routes/index.js](code/leaflet_express/routes/index.js) renders the [public/index.html](code/leaflet_express/public/index.html) file for the `/` path.
+* [public/index.html](code/leaflet_express/public/index.html) includes [public/webmap.js](code/leaflet_express/public/javascripts/webmap.js). Remember that this is the bundled javascript library that contains your [webmap.js](code/leaflet_express/webmap.js) file and all libraries that are mentioned as dependencies in [package.json](code/leaflet_express/package.json).
+
+![final_structure](images/code_schema.jpeg)
+
+### 7.2 Run the express Server
 
 Run the express server with the following command:
 
@@ -343,7 +343,7 @@ Run the express server with the following command:
 npm start
 ```
 
-### 8.3 Viewing the Client Side Browser
+### 7.3 Viewing the Client Side Browser
 
 By default, express runs on port `3000` on `localhost`, which can be accessed in the browser by going to:  
   
@@ -353,11 +353,11 @@ Your browser should display a map that looks similar to the one below:
 
 ![webmap](images/webmap.png)
 
-### 8.4 Shutting Down the express Server
+### 7.4 Shutting Down the express Server
 
 When you are done running the server, shut it down by pressing `Ctrl + C` and then answering `yes` to the user prompt asking for termination.
 
-## 9 Automating Tasks
+## 8 Automating Tasks
 
 # VSCode
 
