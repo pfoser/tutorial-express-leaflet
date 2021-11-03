@@ -27,7 +27,7 @@ Open a [command line interface](https://en.wikipedia.org/wiki/Command-line_inter
 
 ![command_line](images/command_line.gif)
 
-### 2.2 Generate a Project Folder with the express Command
+### 2.2 Express Command
 
 Create an express project with the `express` command, replacing `<project_name>` with the name of your project:
 
@@ -325,9 +325,7 @@ After going through steps 1 to 6, you should have a file structure that looks si
 
 ![final_structure](images/final_structure.png)
 
-## Step 7.1. Code Structure Overview
-
-The following figure provides an overview of the code structure. 
+The following figure provides an overview of the code structure and connections between the various files. 
 * When requesting the application's Web page [localhost:3000/](http://localhost:3000/), [app.js](code/leaflet_express_pug/app.js) is executed by the Web server. 
 * In [app.js](code/leaflet_express_pug/app.js) the `/` path is linked to the `indexRouter` variable and as such to the [routes/index.js](code/leaflet_express/routes/index.js) file. 
 * [routes/index.js](code/leaflet_express/routes/index.js) renders the [public/index.html](code/leaflet_express/public/index.html) file for the `/` path.
@@ -363,6 +361,25 @@ When you are done running the server, shut it down by pressing `Ctrl + C` and th
 
 The tutorial so far has focussed on running the environment using a command line interface. Luckily, there are more comfortable developer environments such as [VSCode](https://code.visualstudio.com). VSCode not only helps you with keeping your code organized, but also provides code analysis such as highlighting (linting), running and debugging, and integrates well with github. 
 
-# Application 2: Templating
+# Application 2: PUG/Jade Templating
 
+[Section 2.2](#22-express-command) shows how to create an express project folder structure using the following command.
 
+```
+express <project_name> --no-view
+```
+
+This creates the following structure
+
+![project_structure](images/project_structure.png).
+
+This first express application uses basic html to embed Javascript. Application 2 now uses Pug, which is a template engine for Node to write html. It uses a simplified syntax that compiles to HTML. It makes for  more reusable and readable code. Check out this nice [Pug overview and tutorial](https://www.sitepoint.com/a-beginners-guide-to-pug/). 
+
+A simple modification to the above express statement creates project that uses Pug templating instead of simple html.
+
+```
+express <project_name> --view=pug
+```
+The resulting folder structure in comparison to Application 1 now looks as follows.
+
+![project_structure](images/project_structure_comparison.jpeg).
