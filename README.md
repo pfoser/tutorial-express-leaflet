@@ -370,7 +370,9 @@ Coming soon...
 
 The tutorial so far has focussed on running the environment using a command line interface. Luckily, there are more comfortable developer environments such as [VSCode](https://code.visualstudio.com). VSCode not only helps you with keeping your code organized, but also provides code analysis such as highlighting (linting), running and debugging, and integrates well with github.
 
-To be expanded...
+The following video shows how to download this tutorial, edit the code and run the code examples. 
+
+[![Tutorial video](images/videocover_youtube.png)](https://youtube.com/watch?v=-ClhH4rNd3s)
 
 # Application 2: PUG/Jade Templating
 
