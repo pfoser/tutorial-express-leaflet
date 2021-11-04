@@ -422,13 +422,32 @@ npm start
 Building on Application 2, we want to expand its scope by showing markers based on a GeoJSON dataset. We will work off an express project structure created by the following command `express leaflet_express_pug_data --view=pug`, which creates the skeleton project structure in [code/leaflet_express_pug_data](code/leaflet_express_pug_data). Go check it out!
 
 ## Overview
-the 
+Using the [Restaurants_data.geojson](code/leaflet_express_pug_data/Restaurant_data.geojson) dataset containing restaurant locations in the DC area, we want to create a leaflet app that simply shows the restaurant locations, and since they are many, also create a [MarkerCluster](https://github.com/Leaflet/Leaflet.markercluster) version that aggregates the markers based on zoom levels. 
+
+The following figure shows these two versions in addition to the simple leaflet app we created in the previous step. 
 
 ![Three apps](images/three_apps.jpeg)
+
+All three web maps are provided by the same express app using three different URLs. This is implemented by the following code structure. Each URL in [index.js](code/leaflet_express_pug_data/routes/index.js) (which is the default route in [app.js](code/leaflet_express_pug_data/app.js)) links to a different html/view and Javascript file as follows:
+* [localhost:3000/](http://localhost:3000) -> [index.pug](code/leaflet_express_pug_data/views/index.pug) -> [webmap.js](code/leaflet_express_pug_data/webmap.js)
+* [localhost:3000/restaurants](http://localhost:3000/restaurants) -> [index2.pug](code/leaflet_express_pug_data/views/index2.pug) -> [webmap2.js](code/leaflet_express_pug_data/webmap2.js)
+* [localhost:3000/restaurants_cluster](http://localhost:3000/restaurants_cluster) -> [index3.pug](code/leaflet_express_pug_data/views/index3.pug) -> [webmap3.js](code/leaflet_express_pug_data/webmap3.js)
 
 ![App3 code structure](images/app3_schema.jpeg)
 
 ## Code Details
+
+What's interesting in this code is how the [Restaurants_data.geojson](code/leaflet_express_pug_data/Restaurant_data.geojson) data is served to the client. The following [index2.pug](code/leaflet_express_pug_data/views/index2.pug) -> [webmap2.js](code/leaflet_express_pug_data/webmap2.js) file looks like 
+
+```javascript
+// index.js excerpt
+...
+router.get('/restaurants', function(req,res, next){
+  res.render('index2', {datastr: JSON.stringify(Restaurants)});
+//  res.render('index', {jsonData: Restaurants});
+})
+...
+```
 
 ```pug
 //index2.pug
