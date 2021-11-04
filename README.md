@@ -381,7 +381,7 @@ express <project_name> --view=pug
 ```
 The resulting folder structure in comparison to Application 1 now looks as follows.
 
-![project_structure](images/project_structure_comparison.jpeg).
+![project_structure](images/project_structure_comparison.jpeg)
 
 ## Pug templates
 Using this templating engine, the index.html page is replaced by Pug views. [layout.pug](code/leaflet_express_pug/views/layout.pug) provides the basic web page template including all stylesheet javascript library links. 
@@ -421,5 +421,47 @@ npm start
 # Application 3: Leaflet and Data
 Building on Application 2, we want to expand its scope by showing markers based on a GeoJSON dataset. We will work off an express project structure created by the following command `express leaflet_express_pug_data --view=pug`, which creates the skeleton project structure in [code/leaflet_express_pug_data](code/leaflet_express_pug_data). Go check it out!
 
+## Overview
+the 
 
+![Three apps](images/three_apps.jpeg)
+
+![App3 code structure](images/app3_schema.jpeg)
+
+## Code Details
+
+```pug
+//index2.pug
+extends layout
+
+block content
+  // create a <div> map element to be referenced in webmap.js
+  #map
+
+  // https://stackoverflow.com/questions/55311902/how-to-pass-json-data-from-express-to-a-javascript-jquery-script-in-pug
+  script(type='text/javascript').
+    window.datastr = "#{datastr}"; 
+  
+  // the leaflet javascript code...
+  script(src='/javascripts/webmap3.js')
+```
+
+```javascript
+// webmap2.js additions
+// ... code from webmap.js
+
+// Adding the GEOJSON DATA
+// This takes the JsonData that was sent with the GET request .
+var datastr_clean = datastr.replace(/&quot;/g, '\"');
+var geojsonobj = JSON.parse(datastr_clean);
+
+console.log(datastr_clean); //debugging
+
+L.geoJSON(geojsonobj).addTo(map);
+```
+
+```javascript
+
+
+```
 
