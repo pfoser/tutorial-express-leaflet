@@ -6,7 +6,7 @@ A tutorial for creating three leaflet webmaps with express in Node.js. The appli
 
 # Preliminaries
 
-## Step 1. Install Software
+## Install Software
 
 1. Install [Node.js](https://nodejs.org/)
 2. Install [express-generator](https://www.npmjs.com/package/express-generator) globally `-g` with [npm](https://docs.npmjs.com/cli/install)
@@ -17,17 +17,13 @@ npm install -g express-generator
 express -h
 ```
 
-## Step 2. Create an express Project
+## Create an express Project
 
 Using the installed software, we can then create an express project folder with the `express` command. This folder will contain all the code required to serve our web pages as Hyper Text Markup Lanauge (HTML)[https://www.w3schools.com/html/] files.
-
-### 2.1 Open a Command Line Interface (CLI)
 
 Open a [command line interface](https://en.wikipedia.org/wiki/Command-line_interface) or terminal:
 
 ![command_line](images/command_line.gif)
-
-### 2.2 Express Command
 
 Create an express project with the `express` command, replacing `<project_name>` with the name of your project:
 
@@ -36,8 +32,6 @@ Create an express project with the `express` command, replacing `<project_name>`
 ```
 express <project_name> --no-view
 ```
-
-### 2.3 Inspect the Project Folder Structure
 
 A folder named `<project_name>` will be created with the following structure inside (note that the structure may change with `express --version` that is not 4.16.0):
 
@@ -57,19 +51,15 @@ A folder named `<project_name>` will be created with the following structure ins
 	* `index.js`: defines the response to client requests at `<address>/` depending on how it is used in file `app.js`
 	* `users.js`: defines the response to client requests at `<address>/users` depending on how it is used in file `app.js`
 
-## Step 3. Install express Dependencies
+## Install express Dependencies
 
 After generating our project folder, we need to install the required Node.js package dependencies for express.
-
-### 3.1 Change Directory
 
 Move into the project folder, where `<project_name>` is the name of the folder you created in [Step 2.2](#step-22-generate-a-project-folder-with-the-express-command):
 
 ```
 cd <project_name>
 ```
-
-### 3.2 Install Package Dependencies
 
 Inside your `<project_name>` folder, install the dependencies with `npm`, where a folder called `/node_modules` will contain the code files of the installed dependencies:
 
@@ -79,11 +69,9 @@ npm install
 
 # Applications 1: a simple Leaflet Webapp
 
-## Step 4. Creating the leaflet Webmap Code
+## Leaflet Webmap Code
 
 We can then create a JavaScript file that stores the code for our leaflet web map. Keep in mind that this code requires Node.js which is only available inside the server or back end.
-
-### 4.1 Install leaflet as a Dependency
 
 Install [leaflet](https://www.npmjs.com/package/leaflet) with `npm install` and save it as a dependency `--save` to `package.json`:
 
@@ -91,15 +79,11 @@ Install [leaflet](https://www.npmjs.com/package/leaflet) with `npm install` and 
 npm install --save leaflet
 ```
 
-### 4.2 Create a leaflet JavaScript File
-
 Create a file for the leaflet map by using the `touch` command:
 
 ```
 touch webmap.js
 ```
-
-### 4.3 Add leaflet Code to the File
 
 Open `webmap.js` for editing and add the following JavaScript code:
 
@@ -133,9 +117,7 @@ L.circleMarker([38.829772, -77.305550]).addTo(map)
 
 Save the added [webmap.js](code/leaflet_express/webmap.js) file (links to the actual file in our repository).
 
-### 4.4 Create a HTML Divider for the leaflet Webmap
-
-Notice that in the code of [Section 4.3](#43-add-leaflet-code-to-the-file), a divider `<div>` with the id `map` is required to create the leaflet webmap. 
+Notice that in the [webmap.js](code/leaflet_express/webmap.js), a divider `<div>` with the id `map` is required to create the leaflet webmap. 
   
 Open `public/index.html` for editing and replace everything with the following HTML code:
 
@@ -161,19 +143,17 @@ Open `public/index.html` for editing and replace everything with the following H
 
 Save the modified [public/index.html](code/leaflet_express/public/index.html) file.
 
-## Step 5. Building the leaflet Webmap Code for the Client Side
+## Client Side Webmap Code
 
-Since `webmap.js` is not served to the client side and requires the server's backend software to run, it needs to be built into client side code and stored inside the `public` folder in order to display in the browser.
+Since [webmap.js](code/leaflet_express/webmap.js) is not served to the client side and requires the server's backend software to run, it needs to be built into client side code and stored inside the `public` folder in order to display in the browser. We need to bundle all necessary Javascript libraries into one big Javascript file. In our case this is [webmap.js](code/leaflet_express/webmap.js). This step is referred to as **bundling**. One such tools is **browserify**.
 
-### 5.1 Install browserify
+### Browserify
 
 Install [browserify](https://www.npmjs.com/package/browserify) globally `-g` with `npm install`:
 
 ```
 npm install -g browserify
 ```
-
-### 5.2 Bundling the leaflet Code
 
 After installing browserify, we can build and bundle the leaflet code from `webmap.js` into `public/javascripts/webmap.js` with the `browserify` command:
 
@@ -209,7 +189,7 @@ This allows us to run the same command for bundling the leaflet code with a more
 npm run build
 ```
 
-### 5.3 Adding the Bundled leaflet Code
+### Adding the Bundled Leaflet Code
 
 You will now notice that [public/javascripts/webmap.js](code/leaflet_express/public/javascripts/webmap.js) exists. This is the bundled version of your leaflet webmap source code, and will need to be added to the [public/index.html](code/leaflet_express/public/index.html) file in order to display your webmap. 
 
@@ -246,11 +226,11 @@ As such, replace the `public/index.html` code with the following:
 
 Save the modified [public/index.html](code/leaflet_express/public/index.html) file.
 
-## Step 6. Final Touches
+## Final Touches
 
 A set of final touches need to be made for better web map appearance and for the leaflet code to display the map properly.
 
-### 6.1 Adding the leaflet CSS
+### Leaflet CSS
 
 Leaflet requires a CSS file in [node_modules/leaflet/dist/leaflet.css](code/leaflet_express/node_modules/leaflet/dist/leaflet.css), which can be copied into the public folder that is served to the client:
 
@@ -300,7 +280,7 @@ It is also important to include the CSS file into your build script in [package.
 }
 ```
 
-### 6.2 Improving the CSS
+### Improving CSS
 
 Since leaflet requires that the dimensions be specified for the webmap divider, we can can replace the contents of the [public/stylesheets/style.css](code/leaflet_express/public/stylesheets/style.css) file with the following to define the width and height of the webmap:
 
@@ -317,9 +297,9 @@ html, body, #map {
 
 Save the modified [public/stylesheets/style.css](code/leaflet_express/public/stylesheets/style.css) file.
 
-## Step 7. Running the Server
+## Running the Server
 
-### 7.1 Final Project Structure
+### Final Project Structure
 
 After going through steps 1 to 6, you should have a file structure that looks similar to the following (node_modules not shown):
 
@@ -333,7 +313,7 @@ The following figure provides an overview of the code structure and connections 
 
 ![final_structure](images/code_schema.jpeg)
 
-### 7.2 Run the express Server
+### Run the express Server
 
 Run the express server with the following command:
 
@@ -341,7 +321,7 @@ Run the express server with the following command:
 npm start
 ```
 
-### 7.3 Viewing the Client Side Browser
+### Viewing the Client Side Browser
 
 By default, express runs on port `3000` on `localhost`, which can be accessed in the browser by going to:  
   
@@ -351,15 +331,19 @@ Your browser should display a map that looks similar to the one below:
 
 ![webmap](images/webmap.png)
 
-### 7.4 Shutting Down the express Server
+### Shutting Down the express Server
 
 When you are done running the server, shut it down by pressing `Ctrl + C` and then answering `yes` to the user prompt asking for termination.
 
 ## Automating Tasks
 
+Coming soon...
+
 # VSCode
 
-The tutorial so far has focussed on running the environment using a command line interface. Luckily, there are more comfortable developer environments such as [VSCode](https://code.visualstudio.com). VSCode not only helps you with keeping your code organized, but also provides code analysis such as highlighting (linting), running and debugging, and integrates well with github. 
+The tutorial so far has focussed on running the environment using a command line interface. Luckily, there are more comfortable developer environments such as [VSCode](https://code.visualstudio.com). VSCode not only helps you with keeping your code organized, but also provides code analysis such as highlighting (linting), running and debugging, and integrates well with github.
+
+To be expanded...
 
 # Application 2: PUG/Jade Templating
 
