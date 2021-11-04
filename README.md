@@ -4,6 +4,33 @@ Original tutorial from Richard Wen <rrwen.dev@gmail.com>. Additions by Dieter Pf
   
 A tutorial for creating three leaflet webmaps with express in Node.js. The applications (see code folder) range from a simple webmap (Application 1) to building a client-server application that shows GeoJSON data (Application 3). Application 2 uses [Pug](https://github.com/pugjs/pug) (formely known as jade), a template engine for building Web pages, to implement Application 1. 
 
+- [Tutorial: Express Node.js Server Leaflet Webmap](#tutorial-express-nodejs-server-leaflet-webmap)
+- [Preliminaries](#preliminaries)
+	- [Install Software](#install-software)
+	- [Create an express Project](#create-an-express-project)
+	- [Install express Dependencies](#install-express-dependencies)
+- [Application 1: a simple Leaflet Webapp](#application-1-a-simple-leaflet-webapp)
+	- [Leaflet Webmap Code](#leaflet-webmap-code)
+	- [Client Side Webmap Code](#client-side-webmap-code)
+		- [Browserify](#browserify)
+		- [Adding the Bundled Leaflet Code](#adding-the-bundled-leaflet-code)
+	- [Final Touches](#final-touches)
+		- [Leaflet CSS](#leaflet-css)
+		- [Improving CSS](#improving-css)
+	- [Running the Server](#running-the-server)
+		- [Final Project Structure](#final-project-structure)
+		- [Run the express Server](#run-the-express-server)
+		- [Viewing the Client Side Browser](#viewing-the-client-side-browser)
+		- [Shutting Down the express Server](#shutting-down-the-express-server)
+	- [Automating Tasks](#automating-tasks)
+- [VSCode](#vscode)
+- [Application 2: PUG/Jade Templating](#application-2-pugjade-templating)
+	- [Pug templates](#pug-templates)
+- [Application 3: Leaflet and Data](#application-3-leaflet-and-data)
+	- [Overview](#overview)
+	- [Code Details](#code-details)
+	- [MarkerClusters](#markerclusters)
+
 # Preliminaries
 
 ## Install Software
@@ -67,7 +94,7 @@ Inside your `<project_name>` folder, install the dependencies with `npm`, where 
 npm install
 ```
 
-# Applications 1: a simple Leaflet Webapp
+# Application 1: a simple Leaflet Webapp
 
 ## Leaflet Webmap Code
 
