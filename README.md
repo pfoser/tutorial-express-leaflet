@@ -439,6 +439,8 @@ All three web maps are provided by the same express app using three different UR
 
 What's interesting in this code is how the [Restaurants_data.geojson](code/leaflet_express_pug_data/Restaurant_data.geojson) data is served to the client. The following [index2.pug](code/leaflet_express_pug_data/views/index2.pug) -> [webmap2.js](code/leaflet_express_pug_data/webmap2.js) file looks like 
 
+
+[index.js](code/leaflet_express_pug_data/routes/index.js)
 ```javascript
 // index.js excerpt
 ...
@@ -448,9 +450,9 @@ router.get('/restaurants', function(req,res, next){
 })
 ...
 ```
-
+[index2.pug](code/leaflet_express_pug_data/views/index2.pug)
 ```pug
-//index2.pug
+// index2.pug
 extends layout
 
 block content
@@ -462,13 +464,14 @@ block content
     window.datastr = "#{datastr}"; 
   
   // the leaflet javascript code...
-  script(src='/javascripts/webmap3.js')
+  script(src='/javascripts/webmap2.js')
 ```
 
+[webmap2.js](code/leaflet_express_pug_data/webmap2.js)
 ```javascript
-// webmap2.js additions
-// ... code from webmap.js
+// webmap2.js excerpt
 
+... //code from webmap.js
 // Adding the GEOJSON DATA
 // This takes the JsonData that was sent with the GET request .
 var datastr_clean = datastr.replace(/&quot;/g, '\"');
@@ -478,9 +481,3 @@ console.log(datastr_clean); //debugging
 
 L.geoJSON(geojsonobj).addTo(map);
 ```
-
-```javascript
-
-
-```
-
