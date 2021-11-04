@@ -437,8 +437,9 @@ All three web maps are provided by the same express app using three different UR
 
 ## Code Details
 
-What's interesting in this code is how the [Restaurants_data.geojson](code/leaflet_express_pug_data/Restaurant_data.geojson) data is served to the client. The following [index2.pug](code/leaflet_express_pug_data/views/index2.pug) -> [webmap2.js](code/leaflet_express_pug_data/webmap2.js) file looks like 
+What's interesting in this code is how the [Restaurants_data.geojson](code/leaflet_express_pug_data/Restaurant_data.geojson) data is served to the client. 
 
+In [index.js](code/leaflet_express_pug_data/routes/index.js) the server provides the JSON data to the client as a string by converting a Javascript JSON object to a string using [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
 
 [index.js](code/leaflet_express_pug_data/routes/index.js)
 ```javascript
@@ -450,6 +451,9 @@ router.get('/restaurants', function(req,res, next){
 })
 ...
 ```
+
+On the client side this data is captured using the `datastr` variable. A better approach would be to use some sort of [AJAX](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX), [fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch)/, or even [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) request to fetch the data (left for another tutorial!). Here is [a nice tutorial](https://cheatcode.co/tutorials/how-to-use-the-javascript-fetch-api-to-perform-http-requests) to get started!
+
 [index2.pug](code/leaflet_express_pug_data/views/index2.pug)
 ```pug
 // index2.pug
@@ -467,6 +471,8 @@ block content
   script(src='/javascripts/webmap2.js')
 ```
 
+In the corresponding Javascript file [webmap2.js](code/leaflet_express_pug_data/webmap2.js) the string in `datastr` is cleaned (has to do with how the string is transmitted, i.e., the type of request and escaped characters) and we create again a Javascript JSON object and the corresponding markers using `L.geoJSON(geojsonobj)`. 
+
 [webmap2.js](code/leaflet_express_pug_data/webmap2.js)
 ```javascript
 // webmap2.js excerpt
@@ -480,4 +486,24 @@ var geojsonobj = JSON.parse(datastr_clean);
 console.log(datastr_clean); //debugging
 
 L.geoJSON(geojsonobj).addTo(map);
+```
+
+## MarkerClusters
+
+In [localhost:3000/restaurants_cluster](http://localhost:3000/restaurants_cluster) clustering markers using Leaflet Markerclusters requires very little change to the code. In the following [webmap3.js](code/leaflet_express_pug_data/webmap3.js) excerpt `group` is introduced as a `L.markerClusterGroup()` to hold the markers.
+
+```javascript
+// webmap3.js excerpt
+
+... //code from webmap.js
+// Adding the GEOJSON DATA
+// This takes the JsonData that was sent with the GET request .
+
+var datastr_clean = datastr.replace(/&quot;/g, '\"');
+var geojsonobj = JSON.parse(datastr_clean);
+
+console.log(datastr_clean);
+
+var group = new L.markerClusterGroup().addTo(map);
+L.geoJSON(geojsonobj).addTo(group);
 ```
