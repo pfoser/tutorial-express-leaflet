@@ -6,6 +6,7 @@ A tutorial for creating three leaflet webmaps with express in Node.js. The appli
 
 - [Tutorial: Express Node.js Server Leaflet Webmap](#tutorial-express-nodejs-server-leaflet-webmap)
 - [Preliminaries](#preliminaries)
+- [Express](#express)
 	- [Install Software](#install-software)
 	- [Create an express Project](#create-an-express-project)
 	- [Install express Dependencies](#install-express-dependencies)
@@ -32,6 +33,19 @@ A tutorial for creating three leaflet webmaps with express in Node.js. The appli
 	- [MarkerClusters](#markerclusters)
 
 # Preliminaries
+
+# Express 
+[Node.js](https://nodejs.org/en/) is a JavaScript run time environment which is used to create server-side applications and tools. Node.js is fast, portable, and written in JavaScript. When creating a Node.js web application, we write a single JavaScript application which listens to requests from the browser, based on the request, the function will send back some data or an HTML web page. A request handler is a JavaScript function which takes a request and sends an appropriate response. This can get complex very fast. 
+
+[Express.js](https://expressjs.com) makes it easier to write Node.js web applications. Express is a light web framework which sits on top of Node.js and it adds functionality like (middleware, routing, etc.) and simplicity to Node.js. A typically client-server application using Express is shown in the following figure. 
+
+![express](https://www.section.io/engineering-education/express/express.png)
+
+[Image Credit](https://www.manning.com/books/express-in-action)
+
+Express integrates well with a template rendering engine (aka view rendering engine) such as Pug (formely known as Jade) or EJS. A template engine enables you to use static template files and at runtime change the values of variables in those files.
+
+Check out [this tutorial](https://www.section.io/engineering-education/express/) for a comprehensive introduction to Express with Node.js.
 
 ## Install Software
 
