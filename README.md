@@ -6,7 +6,7 @@ A tutorial for creating three leaflet webmaps with express in Node.js. The appli
 
 - [Tutorial: Express Node.js Server Leaflet Webmap](#tutorial-express-nodejs-server-leaflet-webmap)
 - [Preliminaries](#preliminaries)
-- [Express](#express)
+- [Node.js and Express](#nodejs-and-express)
 	- [Install Software](#install-software)
 	- [Create an express Project](#create-an-express-project)
 	- [Install express Dependencies](#install-express-dependencies)
@@ -34,7 +34,7 @@ A tutorial for creating three leaflet webmaps with express in Node.js. The appli
 
 # Preliminaries
 
-# Express 
+# Node.js and Express 
 [Node.js](https://nodejs.org/en/) is a JavaScript run time environment which is used to create server-side applications and tools. Node.js is fast, portable, and written in JavaScript. When creating a Node.js web application, we write a single JavaScript application which listens to requests from the browser, based on the request, the function will send back some data or an HTML web page. A request handler is a JavaScript function which takes a request and sends an appropriate response. This can get complex very fast. 
 
 [Express.js](https://expressjs.com) makes it easier to write Node.js web applications. Express is a light web framework which sits on top of Node.js and it adds functionality like (middleware, routing, etc.) and simplicity to Node.js. A typically client-server application using Express is shown in the following figure. 
