@@ -390,18 +390,18 @@ The following video shows how to download this tutorial, edit the code and run t
 
 # Application 2: PUG/Jade Templating
 
-[Section 2.2](#22-express-command) shows how to create an express project folder structure using the following command.
+The previous section showed us how to create an express project folder structure using the following command,
 
 ```
 express <project_name> --no-view
 ```
-creating the following project structure.
+which creates the following project structure.
 
 ![project_structure](images/project_structure.png).
 
 This first express application uses basic html to embed Javascript. Application 2 now uses Pug (formerly known as Jade), which is a template engine for Node to write html. It uses a simplified syntax that compiles to HTML and creates reusable and more readable code. Check out this nice [Pug overview and tutorial](https://www.sitepoint.com/a-beginners-guide-to-pug/). 
 
-A simple modification to the above express statement creates project that uses Pug templating instead of simple html.
+A simple modification to the above express statement creates a project that uses Pug templating instead of simple html.
 
 ```
 express <project_name> --view=pug
@@ -424,7 +424,7 @@ html
   body
     block content
 ```
-layout.pug is used as a basis for actual web pages such as [index.pug](code/leaflet_express_pug/views/index.pug), which `extends layout`. [index.pug](code/leaflet_express_pug/views/index.pug) defines one `div` element for our Leaflet map object and also includes our Javascript code used to create the Leaflet web map (remember, browserify is used to package all libraries that we `require` in our code.)
+layout.pug is used as a basis for actual web pages such as [index.pug](code/leaflet_express_pug/views/index.pug), which `extends layout`. [index.pug](code/leaflet_express_pug/views/index.pug) defines one `div` element for our Leaflet map object and also includes our Javascript code for the Leaflet web map (remember, browserify is used to package all libraries that we `require` in our code.)
 
 ```pug
 // index.pug
@@ -439,7 +439,7 @@ block content
 ```
 And that is it! In a nutshell, this example replaces [index.html](code/leaflet_express/public/index.html) with [layout.pug](code/leaflet_express_pug/views/layout.pug) and [index.pug](code/leaflet_express_pug/views/index.pug), two Pug views (html template files).
 
-The commands to **build your code**, i.e., copy all relevant files to the public directory, and to **start the application** remain the same, and the web application will be available [localhost:3000](http://localhost:3000/).
+The commands to **build your code**, i.e., copy all relevant files to the public directory, and to **start the application** remain the same, and the web application will be available at [localhost:3000](http://localhost:3000/).
 ```
 npm run build
 npm start
