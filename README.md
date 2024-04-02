@@ -39,7 +39,8 @@ A tutorial for creating three leaflet webmaps with express in Node.js. The appli
 
 [Express.js](https://expressjs.com) makes it easier to write Node.js web applications. Express is a light web framework which sits on top of Node.js and it adds functionality like (middleware, routing, etc.) and simplicity to Node.js. A typically client-server application using Express is shown in the following figure. 
 
-![express](https://www.section.io/engineering-education/express/express.png)
+<!-- ![express](https://www.section.io/engineering-education/express/express.png) -->
+![express](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*GuX3lHCjsPQO7iBr03Rx7A.png)
 
 [Image Credit](https://www.manning.com/books/express-in-action)
 
